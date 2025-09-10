@@ -1,0 +1,101 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v2
+  update_url: null
+exported_at: '2025-09-10T17:20:07+00:00'
+name: BFBC2
+author: to222ek@gmail.com
+uuid: 792731a7-5ccf-4782-a3ca-a276f3c69bc6
+description: 'Egg to run BFBC2 server '
+tags: {  }
+features: {  }
+docker_images:
+  wine8: 'ghcr.io/parkervcp/yolks:wine_8'
+  wine9: 'ghcr.io/parkervcp/yolks:wine_9'
+file_denylist: {  }
+startup: 'wine wine Frost.Game.Main_Win32_Final.exe -serverInstancePath "Instance/" -mapPack2Enabled 1  -port 19567 -timeStampLogNames -region EU -displayErrors 0 -serverAdminLogs 0 -displayAsserts 0 -crashDumpAsserts 0 -heartBeatInterval 60000 -plasmaServerLog 0 -crashDumpErrors 0 -RemoteAdminPort 0.0.0.0:48888'
+config:
+  files: {  }
+  startup:
+    done: Frost.Game.Main_Win32_Final.exe
+  logs: {  }
+  stop: ^C
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # The wine generic server installer
+      # This will just pull a download link and unpack it in directory if specified.
+
+      apt update -y
+      apt install -y curl file unzip
+
+      if [ ! -d /mnt/server ]; then
+          mkdir -p /mnt/server/
+      fi
+
+      cd /mnt/server/
+
+      # if an install dir is set then make it and change to it.
+      if [ ! -z ${INSTALL_DIR} ]; then
+          mkdir -p ${INSTALL_DIR}
+          cd ${INSTALL_DIR}
+      fi
+
+      # validate server link
+      if [ ! -z "${DOWNLOAD_URL}" ]; then 
+          if curl --output /dev/null --silent --head --fail ${DOWNLOAD_URL}; then
+              echo -e "link is valid. setting download link to ${DOWNLOAD_URL}"
+              DOWNLOAD_LINK=${DOWNLOAD_URL}
+          else        
+              echo -e "link is invalid closing out"
+              exit 2
+          fi
+      fi
+
+      curl -sSL ${DOWNLOAD_LINK} -o ${DOWNLOAD_LINK##*/}
+
+      # unpack servver files
+      FILETYPE=$(file -F ',' ${DOWNLOAD_LINK##*/} | cut -d',' -f2 | cut -d' ' -f2)
+
+      if [ "$FILETYPE" == "gzip" ]; then
+          tar xzvf ${DOWNLOAD_LINK##*/}
+      elif [ "$FILETYPE" == "Zip" ]; then
+          unzip ${DOWNLOAD_LINK##*/}
+      elif [ "$FILETYPE" == "XZ" ]; then
+          tar xvf ${DOWNLOAD_LINK##*/}
+      else
+          echo -e "unknown filetype. Exiting"
+          exit 2 
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/parkervcp/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 2
+    name: '[SYSTEM] WINEARCH'
+    description: ''
+    env_variable: WINEARCH
+    default_value: win32
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'max:20'
+  -
+    sort: 1
+    name: '[SYSTEM] WINETRICKS_RUN'
+    description: ''
+    env_variable: WINETRICKS_RUN
+    default_value: dinput8
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
