@@ -4,7 +4,7 @@ Presenting you a solution to host a BFBC2 server on linux with Control Panel.
 
 
 ## Installation
-Go to (Pelican)[https://pelican.dev] and follow installation steps
+Go to [Pelican](https://pelican.dev) and follow installation steps
 
 Next import this egg to panel 
 
