@@ -94,7 +94,7 @@ variables:
       - numeric
   -
     sort: 7
-    name: '[SERVER]  BannerURL'
+    name: '[SERVER] BannerURL'
     description: 'Set your banner url '
     env_variable: BANNER_U_R_L
     default_value: ChangeME
@@ -187,7 +187,7 @@ variables:
       - numeric
   -
     sort: 16
-    name: '[SERVER]Display Asserts'
+    name: '[SERVER] Display Asserts'
     description: ''
     env_variable: DISPLAY_ASSERTS
     default_value: 0
@@ -220,7 +220,7 @@ variables:
       - numeric
   -
     sort: 19
-    name: '[SERVER]HeartBeatInterval'
+    name: '[SERVER] HeartBeatInterval'
     description: ''
     env_variable: HEART_BEAT_INTERVAL
     default_value: 30000
@@ -231,9 +231,9 @@ variables:
       - numeric
   -
     sort: 20
-    name: '[SERVER]ServerAdmings'
+    name: '[SERVER] ServerAdminlogs'
     description: ''
-    env_variable: SERVER_ADMINGS
+    env_variable: SERVER_ADMINLOGS
     default_value: 0
     user_viewable: true
     user_editable: true
