@@ -13,7 +13,7 @@ docker_images:
   wine8: 'ghcr.io/parkervcp/yolks:wine_8'
   wine9: 'ghcr.io/parkervcp/yolks:wine_9'
 file_denylist: {  }
-startup: 'wine Frost.Game.Main_Win32_Final.exe -serverInstancePath "Instance/" -mapPack2Enabled 1  -port 19567 -timeStampLogNames -region EU -displayErrors 0 -serverAdminLogs 0 -displayAsserts 0 -crashDumpAsserts 0 -heartBeatInterval 60000 -plasmaServerLog 0 -crashDumpErrors 0 -RemoteAdminPort 0.0.0.0:48888'
+startup: 'wine {{SERVER_EXE}} -Name {{SERVER_NAME}} -serverInstancePath {{INSTANCE}} -mapPack2Enabled {{MAP_PACK}}  -port {{PORT}} {{SERVER_LOGS}} -region {{REGION}} -displayErrors {{DISPLAY_ERRORS}} -serverAdminLogs {{SERVER_ADMINGS}} -displayAsserts {{DISPLAY_ASSERTS}} -crashDumpAsserts {{CRASH_DUMP_ASSERTSS}} -heartBeatInterval {{HEART_BEAT_INTERVAL}} -plasmaServerLog 0 -crashDumpErrors {{CRASH_DUMP_ERRORS}} -RemoteAdminPort {{REMOTE_ADMIN_PORT}} -RemotaAdminPassword {{REMOTE_ADMIN_PASSWORD}} -ServerDescription {{SERVER_DESCRIPTION}}'
 config:
   files: {  }
   startup:
