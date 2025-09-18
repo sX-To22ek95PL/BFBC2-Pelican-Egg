@@ -77,25 +77,226 @@ scripts:
     entrypoint: bash
 variables:
   -
+    sort: 1
+    name: '[SYSTEM] WINETRICKS_RUN'
+    description: ''
+    env_variable: WINETRICKS_RUN
+    default_value: dinput8
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+  -
     sort: 2
     name: '[SYSTEM] WINEARCH'
     description: ''
     env_variable: WINEARCH
     default_value: win32
-    user_viewable: false
+    user_viewable: true
     user_editable: false
     rules:
       - required
       - string
       - 'max:20'
   -
-    sort: 1
-    name: '[SYSTEM] WINETRICKS_RUN'
+    sort: 3
+    name: '[SERVER] ServerName'
+    description: 'Here you can set name of your server '
+    env_variable: SERVER_NAME
+    default_value: ChangeME
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+  -
+    sort: 4
+    name: '[SERVER] ServerDescription'
+    description: 'Set your description of server'
+    env_variable: SERVER_DESCRIPTION
+    default_value: ChangeME
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+  -
+    sort: 5
+    name: '[SERVER] RemoteAdminPort'
+    description: 'Port for rcon used in procon '
+    env_variable: REMOTE_ADMIN_PORT
+    default_value: '0.0.0.0:48888'
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+  -
+    sort: 6
+    name: '[SERVER] Port'
     description: ''
-    env_variable: WINETRICKS_RUN
-    default_value: dinput8
-    user_viewable: false
+    env_variable: PORT
+    default_value: 19567
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - numeric
+  -
+    sort: 7
+    name: '[SERVER]  BannerURL'
+    description: 'Set your banner url '
+    env_variable: BANNER_U_R_L
+    default_value: ChangeME
+    user_viewable: true
+    user_editable: true
+    rules:
+      - url
+  -
+    sort: 8
+    name: '[SERVER] GameModID'
+    description: ''
+    env_variable: GAME_MOD_I_D
+    default_value: BC2
+    user_viewable: true
     user_editable: false
+    rules:
+      - required
+      - string
+  -
+    sort: 9
+    name: '[SERVER] SLOTS'
+    description: 'Set your desired amount of player slots on server'
+    env_variable: SLOTS
+    default_value: 32
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - numeric
+  -
+    sort: 10
+    name: '[SERVER] Server exe'
+    description: ''
+    env_variable: SERVER_EXE
+    default_value: Frost.Game.Main_Win32_Final.exe
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+  -
+    sort: 11
+    name: '[SERVER] Instance'
+    description: ''
+    env_variable: INSTANCE
+    default_value: Instance/
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+  -
+    sort: 12
+    name: '[SERVER] MapPack'
+    description: ''
+    env_variable: MAP_PACK
+    default_value: 1
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+  -
+    sort: 13
+    name: '[SERVER] Server Logs'
+    description: ''
+    env_variable: SERVER_LOGS
+    default_value: '-timeStampLogNames'
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+  -
+    sort: 14
+    name: '[SERVER] REGION'
+    description: ''
+    env_variable: REGION
+    default_value: EU
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+  -
+    sort: 15
+    name: '[SERVER] Display Errors'
+    description: ''
+    env_variable: DISPLAY_ERRORS
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - numeric
+  -
+    sort: 16
+    name: '[SERVER]Display Asserts'
+    description: ''
+    env_variable: DISPLAY_ASSERTS
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - numeric
+  -
+    sort: 17
+    name: '[SERVER] CrashDumpErrors'
+    description: ''
+    env_variable: CRASH_DUMP_ERRORS
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - numeric
+  -
+    sort: 18
+    name: '[SERVER] CrashDumpAssertss'
+    description: ''
+    env_variable: CRASH_DUMP_ASSERTSS
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - numeric
+  -
+    sort: 19
+    name: '[SERVER]HeartBeatInterval'
+    description: ''
+    env_variable: HEART_BEAT_INTERVAL
+    default_value: 30000
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - numeric
+  -
+    sort: 20
+    name: '[SERVER]ServerAdmings'
+    description: ''
+    env_variable: SERVER_ADMINGS
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - numeric
+  -
+    sort: 21
+    name: '[SERVER] Remote Admin Password'
+    description: 'Password for rcon (to use in procon)'
+    env_variable: REMOTE_ADMIN_PASSWORD
+    default_value: ChangeME
+    user_viewable: true
+    user_editable: true
     rules:
       - required
       - string
