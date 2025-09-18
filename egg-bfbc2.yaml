@@ -13,7 +13,7 @@ docker_images:
   wine8: 'ghcr.io/parkervcp/yolks:wine_8'
   wine9: 'ghcr.io/parkervcp/yolks:wine_9'
 file_denylist: {  }
-startup: 'wine {{SERVER_EXE}} -Name {{SERVER_NAME}} -serverInstancePath {{INSTANCE}} -mapPack2Enabled {{MAP_PACK}}  -port {{PORT}} {{SERVER_LOGS}} -region {{REGION}} -displayErrors {{DISPLAY_ERRORS}} -serverAdminLogs {{SERVER_ADMINGS}} -displayAsserts {{DISPLAY_ASSERTS}} -crashDumpAsserts {{CRASH_DUMP_ASSERTSS}} -heartBeatInterval {{HEART_BEAT_INTERVAL}} -plasmaServerLog 0 -crashDumpErrors {{CRASH_DUMP_ERRORS}} -RemoteAdminPort {{REMOTE_ADMIN_PORT}} -RemotaAdminPassword {{REMOTE_ADMIN_PASSWORD}} -ServerDescription {{SERVER_DESCRIPTION}}'
+startup: 'wine {{SERVER_EXE}} -Name {{SERVER_NAME}} -serverInstancePath {{INSTANCE}} -mapPack2Enabled {{MAP_PACK}}  -port {{PORT}} {{SERVER_LOGS}} -region {{REGION}} -displayErrors {{DISPLAY_ERRORS}} -serverAdminLogs {{SERVER_ADMINGS}} -displayAsserts {{DISPLAY_ASSERTS}} -crashDumpAsserts {{CRASH_DUMP_ASSERTSS}} -heartBeatInterval {{HEART_BEAT_INTERVAL}} -plasmaServerLog 0 -crashDumpErrors {{CRASH_DUMP_ERRORS}} -RemoteAdminPort {{REMOTE_ADMIN_PORT}} -RemotaAdminPassword {{REMOTE_ADMIN_PASSWORD}} -ServerDescription {{SERVER_DESCRIPTION}} -RevisionLevel {{REVISION_LEVEL}} -RevisionKey {{REVISION_KEY}}'
 config:
   files: {  }
   startup:
@@ -250,3 +250,23 @@ variables:
     rules:
       - required
       - string
+  -
+    sort: 22
+    name: '[SERVER]  RevisionKey'
+    description: ''
+    env_variable: REVISION_KEY
+    default_value: 7C0A303E-F4D2-985E-763D-E7C41B1E06A3
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+  -
+    sort: 23
+    name: '[SERVER]  RevisionLevel'
+    description: ''
+    env_variable: REVISION_LEVEL
+    default_value: 8
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required    
